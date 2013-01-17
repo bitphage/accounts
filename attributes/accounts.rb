@@ -15,4 +15,4 @@ default[:accounts][:default][:do_ssh] = false
 default[:accounts][:default][:do_sudo] = false
 # sudo access management
 default[:accounts][:sudo][:groups] = []
-default[:accounts[:sudo][:users] = []
+default[:accounts][:sudo][:users] = []
