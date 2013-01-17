@@ -45,15 +45,6 @@ define :account, :account_type => "user", :uid => nil,  :comment => nil, :group 
   end
 
   if params[:sudo]
-    unless node[:accounts].has_key?(:sudo)
-      node.set[:accounts][:sudo] = Mash.new
-    end
-    unless node[:accounts][:sudo].has_key?(:groups)
-       node.set[:accounts][:sudo][:groups] = Array.new
-    end
-    unless node[:accounts][:sudo].has_key?(:users)
-       node.set[:accounts][:sudo][:users] = Array.new 
-    end
     unless node[:accounts][:sudo][:groups].include?(params[:group])
         node.set[:accounts][:sudo][:users] |= [params[:name]]
     end
