@@ -46,8 +46,11 @@ define :account, :account_type => "user", :uid => nil,  :comment => nil, :group 
 
   if params[:sudo]
     unless node[:accounts][:sudo][:groups].include?(params[:group])
-        node.set[:accounts][:sudo][:users] |= [params[:name]]
+      unless node[:accounts][:sudo][:users].include?(params[:name])
+          a = Array.new(node[:accounts][:sudo][:users])
+          a.push( params[:name] )
+          node.set[:accounts][:sudo][:users] = a
+      end
     end
   end
-
 end
