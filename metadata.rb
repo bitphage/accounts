@@ -4,7 +4,7 @@ maintainer_email "sander@vanzoest.com"
 license          "Apache 2.0"
 description      "System Accounts management"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.1.3"
+version          "0.2.0"
 replaces         "sudo"
 conflicts        "sudo"
 %w{redhat centos debian ubuntu}.each do |os|
@@ -72,7 +72,7 @@ attribute "accounts/sudo/groups",
   :description => "Groups who are allowed sudo ALL",
   :type => "array",
   :default => ""
-   
+
 attribute "accounts/sudo/users",
   :display_name => "Sudo users",
   :description => "Users who are allowed to sudo ALL",
