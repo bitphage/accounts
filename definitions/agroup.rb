@@ -8,7 +8,7 @@ define :agroup, :gid => nil, :sudo => false do
 
   # http://wiki.opscode.com/display/chef/Resources#Resources-Group
   group params[:name] do
-     gid params[:gid]
+    gid params[:gid]
   end
 
   if params[:sudo]

@@ -38,7 +38,7 @@ template "/etc/sudoers" do
   owner "root"
   group "root"
   variables(
-    :sudoers_groups => node[:accounts][:sudo][:groups], 
+    :sudoers_groups => node[:accounts][:sudo][:groups],
     :sudoers_users => node[:accounts][:sudo][:users]
   )
 end

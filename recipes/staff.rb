@@ -31,4 +31,3 @@ include_recipe "accounts::sysadmins"
 #  ssh true
 #  sudo false
 #end
-

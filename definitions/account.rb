@@ -5,11 +5,10 @@
 # Copyright 2009, Alexander van Zoest
 #
 #define :account, :uid => nil,  :comment => nil, :group => node[:accounts][:default][:group], :ssh => node[:accounts][:default][:do_ssh], :sudo => node[:accounts][:default][:do_sudo] do
-define :account, :account_type => "user", :uid => nil,  :comment => nil, :group => "users", :ssh => false, :sudo => false do
+define :account, :account_type => "user", :uid => nil, :comment => nil, :group => "users", :ssh => false, :sudo => false do
 #    group params[:group] do
 #      gid params[:gid]
 #    end
-
 
   home_dir = params[:home] || "#{node[:accounts][:dir]}/#{params[:name]}"
 
@@ -47,9 +46,9 @@ define :account, :account_type => "user", :uid => nil,  :comment => nil, :group 
   if params[:sudo]
     unless node[:accounts][:sudo][:groups].include?(params[:group])
       unless node[:accounts][:sudo][:users].include?(params[:name])
-          a = Array.new(node[:accounts][:sudo][:users])
-          a.push( params[:name] )
-          node.set[:accounts][:sudo][:users] = a
+        a = Array.new(node[:accounts][:sudo][:users])
+        a.push(params[:name])
+        node.set[:accounts][:sudo][:users] = a
       end
     end
   end
