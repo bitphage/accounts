@@ -19,6 +19,14 @@
 
 # Default depenendencies that need to be installed for accounts to function.
 
+if platform_family?("debian", "rhel")
+  # install ruby shadow to enable password changes on particular Linux families
+  # @see https://tickets.opscode.com/browse/CHEF-4402
+  chef_gem "ruby-shadow" do
+    action :install
+  end
+end
+
 package "sudo" do
   action :upgrade
 end
