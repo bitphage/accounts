@@ -4,7 +4,7 @@ maintainer_email "sander@vanzoest.com"
 license          "Apache 2.0"
 description      "System Accounts management"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.2.0"
+version          "0.2.1"
 replaces         "sudo"
 conflicts        "sudo"
 %w{redhat centos debian ubuntu}.each do |os|
@@ -14,8 +14,12 @@ recipe           "accounts", "Generic Account Setup, users can be added via defi
 recipe           "accounts::sysadmins", "Shortcut for loading all system administrator accounts"
 recipe           "accounts::apps", "Shortcut for Application Specific Role accounts"
 recipe           "accounts::staff", "Shortcut for loading all staff accounts"
-provides         "account(:user, :group, :ssh, :sudo)"
-provides         "agroup(:group, :sudo)"
+provides "account::user"
+provides "account::group"
+provides "account::ssh"
+provides "account::sudo"
+provides "agroup::group"
+provides "agroup::sudo"
 
 attribute "accounts",
   :display_name => "Accounts Hash",
