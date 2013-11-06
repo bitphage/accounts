@@ -5,7 +5,7 @@
 # Copyright 2009, Alexander van Zoest
 #
 #define :account, :uid => nil,  :comment => nil, :group => node[:accounts][:default][:group], :ssh => node[:accounts][:default][:do_ssh], :sudo => node[:accounts][:default][:do_sudo] do
-define :account, :account_type => "user", :uid => nil, :comment => nil, :group => "users", :ssh => false, :sudo => false do
+define :account, :account_type => 'user', :uid => nil, :comment => nil, :group => 'users', :ssh => false, :sudo => false do
 #    group params[:group] do
 #      gid params[:gid]
 #    end
@@ -39,7 +39,7 @@ define :account, :account_type => "user", :uid => nil, :comment => nil, :group =
       files_mode 0600
       owner params[:name]
       group params[:gid] || params[:group]
-      mode "0700"
+      mode '0700'
     end
   end
 
