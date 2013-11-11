@@ -5,7 +5,7 @@
 #
 # Copyright 2009, Alexander van Zoest
 #
-#define :account, :uid => nil,  :comment => nil, :group => node[:accounts][:default][:group], :ssh => node[:accounts][:default][:do_ssh], :sudo => node[:accounts][:default][:do_sudo] do
+# define :account, :uid => nil,  :comment => nil, :group => node[:accounts][:default][:group], :ssh => node[:accounts][:default][:do_ssh], :sudo => node[:accounts][:default][:do_sudo] do
 define :account, :account_type => 'user', :uid => nil, :comment => nil, :group => 'users', :ssh => false, :sudo => false do
 #    group params[:group] do
 #      gid params[:gid]

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 name             'accounts'
 maintainer       'Sander van Zoest'
 maintainer_email 'sander@vanzoest.com'
