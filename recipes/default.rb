@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #
 # Cookbook Name:: accounts
 # Recipe:: default
@@ -38,7 +39,7 @@ template '/etc/sudoers' do
   owner 'root'
   group 'root'
   variables(
-    :sudoers_groups => node[:accounts][:sudo][:groups],
-    :sudoers_users => node[:accounts][:sudo][:users]
+    sudoers_groups: node[:accounts][:sudo][:groups],
+    sudoers_users: node[:accounts][:sudo][:users]
   )
 end

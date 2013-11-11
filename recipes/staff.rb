@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #
 # Cookbook Name:: accounts
 # Recipe:: staff
@@ -22,12 +23,11 @@ include_recipe 'accounts::sysadmins'
 # Here you can put account definitions for each account you want installed when someone includes
 # include_recipe "accounts::staff"
 
-
-#account "employee1" do
-#  uid "1000"
-#  account_type "user"
-#  comment "Employee #1"
-#  password "somepass"
-#  ssh true
-#  sudo false
-#end
+# account "employee1" do
+#   uid "1000"
+#   account_type "user"
+#   comment "Employee #1"
+#   password "somepass"
+#   ssh true
+#   sudo false
+# end
