@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #
 # Cookbook Name:: accounts
 # Recipe:: apps
@@ -20,10 +21,10 @@
 # Here you can put account definitions for each account you want installed when someone includes
 # include_recipe "accounts::apps"
 
-#account "app1" do
-#  uid "500"
-#  account_type "role"
-#  comment "Application Role Account #1"
-#  ssh true
-#  sudo false
-#end
+# account "app1" do
+#   uid "500"
+#   account_type "role"
+#   comment "Application Role Account #1"
+#   ssh true
+#   sudo false
+# end
