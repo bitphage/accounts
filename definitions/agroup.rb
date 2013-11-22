@@ -5,7 +5,7 @@
 #
 # Copyright 2009, Alexander van Zoest
 #
-define :agroup, :gid => nil, :sudo => false do
+define :agroup, gid: nil, sudo: false do
 
   # http://wiki.opscode.com/display/chef/Resources#Resources-Group
   group params[:name] do
