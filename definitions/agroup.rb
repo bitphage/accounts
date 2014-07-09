@@ -12,8 +12,5 @@ define :agroup, gid: nil, sudo: false do
     gid params[:gid]
   end
 
-  if params[:sudo]
-    node.set[:accounts][:sudo][:groups] |= [params[:name]]
-  end
-
+  node.set[:accounts][:sudo][:groups] |= [params[:name]] if params[:sudo]
 end

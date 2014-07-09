@@ -16,10 +16,6 @@ define :account, account_type: 'user',
                  group: 'users',
                  ssh: false,
                  sudo: false do
-#    group params[:group] do
-#      gid params[:gid]
-#    end
-
   home_dir = params[:home] || "#{node[:accounts][:dir]}/#{params[:name]}"
 
   user params[:name] do

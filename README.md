@@ -1,4 +1,4 @@
-# or_sftp cookbook
+# accounts cookbook
 
 This cookbook combines system account management for different services under a single interface.
 It currently manages users, groups and the associate ssh and sudo settings.
@@ -37,6 +37,3 @@ git submodule or however you would like to manage that data.
 
 # Recipes
 
-# Author
-
-Author:: YOUR_NAME (<YOUR_EMAIL>)
