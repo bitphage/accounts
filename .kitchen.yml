@@ -1,0 +1,29 @@
+---
+driver:
+   name: vagrant
+
+provisioner:
+  name: chef_solo
+  require_chef_omnibus: latest
+
+provisioner:
+  data_path: test/shared
+
+platforms:
+- name: centos-6.5
+- name: ubuntu-12.04
+  run_list:
+  - recipe[apt]
+- name: ubuntu-14.04
+  run_list:
+  - recipe[apt]
+- name: debian-7.4
+- name: fedora-20
+
+suites:
+  - name: default
+    attributes:
+      machine_fqdn: working.computers.biz
+      machine_fqdn_as_hostname: true
+    run_list:
+      - recipe[accounts::default]
