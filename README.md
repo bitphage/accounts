@@ -1,6 +1,6 @@
 accounts Cookbook
 =================
-[![Build Status](https://secure.travis-ci.org/onehealth-cookbooks/accounts.png?branch=master)](http://travis-ci.org/onehealth-cookbooks/accounts)
+[![Build Status](https://secure.travis-ci.org/svanzoest-cookbooks/accounts.png?branch=master)](http://travis-ci.org/svanzoest-cookbooks/accounts)
 
 This cookbook combines system account management for different services under a single interface.
 It currently manages users, groups and the associate ssh and sudo settings.
@@ -51,10 +51,9 @@ Below are the attributes that you can set to influence how the cookbook behaves.
 License and Authors
 ===================
 
-* Author:: Sander van Zoest <svanzoest@onehealth.com>
+* Author:: Sander van Zoest <sander+cookbooks@vanzoest.com>
 
-* Copyright:: 2009 Alexander van Zoest
-* Copyright:: 2010-2014, OneHealth Solutions, Inc.
+* Copyright:: 2009-2015 Alexander van Zoest
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

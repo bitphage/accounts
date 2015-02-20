@@ -11,14 +11,12 @@ provisioner:
 
 platforms:
 - name: centos-6.5
-- name: ubuntu-12.04
-  run_list:
-  - recipe[apt]
+- name: centos-7.0
 - name: ubuntu-14.04
   run_list:
   - recipe[apt]
 - name: debian-7.4
-- name: fedora-20
+- name: fedora-21
 
 suites:
   - name: default

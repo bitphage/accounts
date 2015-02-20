@@ -7,23 +7,23 @@
 #
 # define :account, uid: nil,
 #                   comment: nil,
-#                   group: node[:accounts][:default][:group],
-#                   ssh: node[:accounts][:default][:do_ssh],
-#                   sudo: node[:accounts][:default][:do_sudo] do
+#                   group: node['accounts']['default']['group'],
+#                   ssh: node['accounts']['default']['do_ssh'],
+#                   sudo: node['accounts']['default']['do_sudo'] do
 define :account, account_type: 'user',
                  uid: nil,
                  comment: nil,
                  group: 'users',
                  ssh: false,
                  sudo: false do
-  home_dir = params[:home] || "#{node[:accounts][:dir]}/#{params[:name]}"
+  home_dir = params[:home] || "#{node['accounts']['dir']}/#{params[:name]}"
 
   user params[:name] do
     comment params[:comment] if params[:comment]
     password params[:password] if params[:password]
     uid params[:uid] if params[:uid]
     gid params[:gid] || params[:group]
-    shell params[:shell] || node[:accounts][:default][:shell]
+    shell params[:shell] || node['accounts']['default']['shell']
     home home_dir
     action :create
   end
@@ -37,9 +37,9 @@ define :account, account_type: 'user',
 
   if params[:ssh]
     remote_directory "#{home_dir}/.ssh" do
-      cookbook node[:accounts][:cookbook]
+      cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/ssh"
-      files_backup node[:accounts][:default][:file_backup]
+      files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
       files_group params[:gid] || params[:group]
       files_mode 0600
@@ -50,11 +50,11 @@ define :account, account_type: 'user',
   end
 
   if params[:sudo]
-    unless node[:accounts][:sudo][:groups].include?(params[:group])
-      unless node[:accounts][:sudo][:users].include?(params[:name])
-        a = Array.new(node[:accounts][:sudo][:users])
+    unless node['accounts']['sudo']['groups'].include?(params[:group])
+      unless node['accounts']['sudo']['users'].include?(params[:name])
+        a = Array.new(node['accounts']['sudo']['users'])
         a.push(params[:name])
-        node.set[:accounts][:sudo][:users] = a
+        node.set['accounts']['sudo']['users'] = a
       end
     end
   end

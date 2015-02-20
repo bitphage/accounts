@@ -33,13 +33,13 @@ package 'sudo' do
 end
 
 template '/etc/sudoers' do
-  cookbook node[:accounts][:cookbook]
+  cookbook node['accounts']['cookbook']
   source 'sudoers.erb'
   mode 0440
   owner 'root'
   group 'root'
   variables(
-    sudoers_groups: node[:accounts][:sudo][:groups],
-    sudoers_users: node[:accounts][:sudo][:users]
+    sudoers_groups: node['accounts']['sudo']['groups'],
+    sudoers_users: node['accounts']['sudo']['users']
   )
 end

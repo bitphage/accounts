@@ -1,19 +1,17 @@
-# encoding: UTF-8
-#
 # Cookbook Name:: accounts
-# Attributes:: accounts
+# Attributes:: defaults
 #
-# Copyright 2009, Alexander van Zoest
+# Copyright 2009-2015, Alexander van Zoest
 #
 # global settings
-default[:accounts][:dir] = '/home'
-default[:accounts][:cookbook] = 'accounts'
+default['accounts']['dir'] = '/home'
+default['accounts']['cookbook'] = 'accounts'
 # default settings
-default[:accounts][:default][:shell] = '/bin/bash'
-default[:accounts][:default][:file_backup] = 2
-default[:accounts][:default][:group] = 'users'
-default[:accounts][:default][:do_ssh] = false
-default[:accounts][:default][:do_sudo] = false
+default['accounts']['default']['shell'] = '/bin/bash'
+default['accounts']['default']['file_backup'] = 2
+default['accounts']['default']['group'] = 'users'
+default['accounts']['default']['do_ssh'] = false
+default['accounts']['default']['do_sudo'] = false
 # sudo access management
-default[:accounts][:sudo][:groups] = []
-default[:accounts][:sudo][:users] = []
+default['accounts']['sudo']['groups'] = []
+default['accounts']['sudo']['users'] = []
