@@ -75,7 +75,7 @@ define :account, account_type: 'user',
       unless node['accounts']['sudo']['users'].include?(params[:name])
         a = Array.new(node['accounts']['sudo']['users'])
         a.push(params[:name])
-        node.set['accounts']['sudo']['users'] = a
+        node.normal['accounts']['sudo']['users'] = a
       end
     end
   end
