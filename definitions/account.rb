@@ -15,6 +15,7 @@ define :account, account_type: 'user',
                  comment: nil,
                  group: 'users',
                  ssh: false,
+                 configs: false,
                  sudo: false do
   home_dir = params[:home] || "#{node['accounts']['dir']}/#{params[:name]}"
 
@@ -39,6 +40,20 @@ define :account, account_type: 'user',
     remote_directory "#{home_dir}/.ssh" do
       cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/ssh"
+      files_backup node['accounts']['default']['file_backup']
+      files_owner params[:name]
+      files_group params[:gid] || params[:group]
+      files_mode 0600
+      owner params[:name]
+      group params[:gid] || params[:group]
+      mode '0700'
+    end
+  end
+
+  if params[:configs]
+    remote_directory "#{home_dir}/" do
+      cookbook node['accounts']['cookbook']
+      source "#{params[:account_type]}s/#{params[:name]}/configs"
       files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
       files_group params[:gid] || params[:group]
