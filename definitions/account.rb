@@ -16,7 +16,8 @@ define :account, account_type: 'user',
                  group: 'users',
                  ssh: false,
                  configs: false,
-                 sudo: false do
+                 sudo: false,
+                 :action => "create" do
   home_dir = params[:home] || "#{node['accounts']['dir']}/#{params[:name]}"
 
   user params[:name] do
@@ -26,7 +27,7 @@ define :account, account_type: 'user',
     gid params[:gid] || params[:group]
     shell params[:shell] || node['accounts']['default']['shell']
     home home_dir
-    action :create
+    action params[:action]
   end
 
   directory home_dir do
@@ -34,9 +35,14 @@ define :account, account_type: 'user',
     owner params[:name]
     group params[:gid] || params[:group]
     mode 0711
+    if params[:action] == "create"
+      action "create"
+    elsif params[:action] == "remove"
+      action "delete"
+    end
   end
 
-  if params[:ssh]
+  if params[:ssh] and params[:action] == "create"
     remote_directory "#{home_dir}/.ssh" do
       cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/ssh"
@@ -50,7 +56,7 @@ define :account, account_type: 'user',
     end
   end
 
-  if params[:configs]
+  if params[:configs] and params[:action] == "create"
     remote_directory "#{home_dir}/" do
       cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/configs"
@@ -64,7 +70,7 @@ define :account, account_type: 'user',
     end
   end
 
-  if params[:sudo]
+  if params[:sudo] and params[:action] == "create"
     unless node['accounts']['sudo']['groups'].include?(params[:group])
       unless node['accounts']['sudo']['users'].include?(params[:name])
         a = Array.new(node['accounts']['sudo']['users'])
