@@ -17,7 +17,7 @@ define :account, account_type: 'user',
                  ssh: false,
                  configs: false,
                  sudo: false,
-                 :action => "create" do
+                 :action => 'create' do
   home_dir = params[:home] || "#{node['accounts']['dir']}/#{params[:name]}"
 
   user params[:name] do
@@ -34,43 +34,43 @@ define :account, account_type: 'user',
     recursive true
     owner params[:name]
     group params[:gid] || params[:group]
-    mode 0711
-    if params[:action] == "create"
-      action "create"
-    elsif params[:action] == "remove"
-      action "delete"
+    mode '0711'
+    if params[:action] == 'create'
+      action 'create'
+    elsif params[:action] == 'remove'
+      action 'delete'
     end
   end
 
-  if params[:ssh] and params[:action] == "create"
+  if params[:ssh] && params[:action] == 'create'
     remote_directory "#{home_dir}/.ssh" do
       cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/ssh"
       files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
       files_group params[:gid] || params[:group]
-      files_mode 0600
+      files_mode '0600'
       owner params[:name]
       group params[:gid] || params[:group]
       mode '0700'
     end
   end
 
-  if params[:configs] and params[:action] == "create"
+  if params[:configs] && params[:action] == 'create'
     remote_directory "#{home_dir}/" do
       cookbook node['accounts']['cookbook']
       source "#{params[:account_type]}s/#{params[:name]}/configs"
       files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
       files_group params[:gid] || params[:group]
-      files_mode 0600
+      files_mode '0600'
       owner params[:name]
       group params[:gid] || params[:group]
       mode '0700'
     end
   end
 
-  if params[:sudo] and params[:action] == "create"
+  if params[:sudo] && params[:action] == 'create'
     unless node['accounts']['sudo']['groups'].include?(params[:group])
       unless node['accounts']['sudo']['users'].include?(params[:name])
         a = Array.new(node['accounts']['sudo']['users'])
