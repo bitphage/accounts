@@ -9,5 +9,5 @@ define :agroup, gid: nil, sudo: false do
     gid params[:gid]
   end
 
-  node.set['accounts']['sudo']['groups'] |= [params[:name]] if params[:sudo]
+  node.normal['accounts']['sudo']['groups'] |= [params[:name]] if params[:sudo]
 end

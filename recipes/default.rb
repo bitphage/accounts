@@ -35,7 +35,7 @@ end
 template '/etc/sudoers' do
   cookbook node['accounts']['cookbook']
   source 'sudoers.erb'
-  mode 0440
+  mode '0440'
   owner 'root'
   group 'root'
   variables(
