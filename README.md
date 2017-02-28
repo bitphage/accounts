@@ -20,7 +20,7 @@ Requirements
 ```ruby
 include_recipe "accounts"
 
-# optionally set node[:accounts][:cookbook] to the cookbook that contains the config files
+# optionally set node['accounts']['cookbook'] to the cookbook that contains the config files
 
 account "role" do
   uid "700"
@@ -41,12 +41,12 @@ Attributes
 
 Below are the attributes that you can set to influence how the cookbook behaves.
 
-* `node[:accounts][:dir]` - Home Directory for accounts, default `/home`
-* `node[:accounts][:cookbook]` - Cookbook to grab the actual account settings from, default `accounts`
-* `node[:accounts][:default][:shell]` - Default Account Shell if none specified
-* `node[:accounts][:default][:group]` - Default Account Group if none specified
-* `node[:accounts][:default][:do_ssh]` - Boolean to copy over the `authorized_keys` file from `files/default/{roles,users}/<account>/ssh/`
-* `node[:accounts][:default][:do_sudo]` - Boolean to enable `sudo` access for the account
+* `node['accounts']['dir']` - Home Directory for accounts, default `/home`
+* `node['accounts']['cookbook']` - Cookbook to grab the actual account settings from, default `accounts`
+* `node['accounts']['default']['shell']` - Default Account Shell if none specified
+* `node['accounts']['default']['group']` - Default Account Group if none specified
+* `node['accounts']['default']['do_ssh']` - Boolean to copy over the `authorized_keys` file from `files/default/{roles,users}/<account>/ssh/`
+* `node['accounts']['default']['do_sudo']` - Boolean to enable `sudo` access for the account
 
 License and Authors
 ===================
@@ -54,6 +54,7 @@ License and Authors
 * Author:: Sander van Zoest <sander+cookbooks@vanzoest.com>
 
 * Copyright:: 2009-2015 Alexander van Zoest
+* Copyright:: 2017 Vladimir Kamarzin
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
