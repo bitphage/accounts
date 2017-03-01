@@ -44,7 +44,6 @@ Below are the attributes that you can set to influence how the cookbook behaves.
 * `node['accounts']['dir']` - Home Directory for accounts, default `/home`
 * `node['accounts']['cookbook']` - Cookbook to grab the actual account settings from, default `accounts`
 * `node['accounts']['default']['shell']` - Default Account Shell if none specified
-* `node['accounts']['default']['group']` - Default Account Group if none specified
 * `node['accounts']['default']['do_ssh']` - Boolean to copy over the `authorized_keys` file from `files/default/{roles,users}/<account>/ssh/`
 * `node['accounts']['default']['do_sudo']` - Boolean to enable `sudo` access for the account
 

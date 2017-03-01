@@ -13,7 +13,7 @@
 define :account, account_type: 'user',
                  uid: nil,
                  comment: nil,
-                 group: 'users',
+                 group: nil,
                  ssh: false,
                  configs: false,
                  sudo: false,
@@ -33,7 +33,7 @@ define :account, account_type: 'user',
   directory home_dir do
     recursive true
     owner params[:name]
-    group params[:gid] || params[:group]
+    group params[:gid] || params[:group] || params[:name]
     mode '0711'
     if params[:action] == 'create'
       action 'create'
@@ -48,10 +48,10 @@ define :account, account_type: 'user',
       source "#{params[:account_type]}s/#{params[:name]}/ssh"
       files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
-      files_group params[:gid] || params[:group]
+      files_group params[:gid] || params[:group] || params[:name]
       files_mode '0600'
       owner params[:name]
-      group params[:gid] || params[:group]
+      group params[:gid] || params[:group] || params[:name]
       mode '0700'
     end
   end
@@ -62,10 +62,10 @@ define :account, account_type: 'user',
       source "#{params[:account_type]}s/#{params[:name]}/configs"
       files_backup node['accounts']['default']['file_backup']
       files_owner params[:name]
-      files_group params[:gid] || params[:group]
+      files_group params[:gid] || params[:group] || params[:name]
       files_mode '0600'
       owner params[:name]
-      group params[:gid] || params[:group]
+      group params[:gid] || params[:group] || params[:name]
       mode '0700'
     end
   end
